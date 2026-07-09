@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Design Portfolio",
+  title: "anide",
   description: "Design portfolio showcasing selected work and creative process.",
+  icons: {
+    icon: "/cross.png",
+  },
 };
 
 export default function RootLayout({
