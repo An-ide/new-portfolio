@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/pulchella-free');
+@import url('https://db.onlinewebfonts.com/c/1f67bf26d1851fc9aad4bb73cb5c2aa5?family=PoliteType');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --muted: #a0a0a0;
+  --border: #1a1a1a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+.section-padding {
+  padding: 3.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 10rem 4rem;
+  }
+}
+
+.font-pulchella {
+  font-family: 'Pulchella Free', sans-serif;
+}
+
+@font-face {
+  font-family: 'Harmond';
+  src: url('/fonts/HarmondExtraBoldExpanded.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.font-harmond {
+  font-family: 'Harmond', serif;
+}
+
+@font-face {
+  font-family: 'Maghfirea';
+  src: url('/Maghfirea.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-maragsa {
+  font-family: 'Maghfirea', sans-serif;
+}
+
+.font-polite {
+  font-family: 'PoliteType', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.content-bg {
+  background: #e7cb73;
+}
