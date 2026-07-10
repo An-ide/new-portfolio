@@ -296,10 +296,16 @@ export default function Nav() {
         <MobileMuteButton color={[r, g, b]} />
         <a
           href="/"
-          className="font-pulchella font-medium text-2xl leading-none select-none absolute left-1/2 -translate-x-1/2 top-3"
-          style={{ color: `rgb(${r}, ${g}, ${b})` }}
+          className="absolute left-[calc(50%-1px)] -translate-x-1/2 top-2 select-none"
         >
-          AnideDevan
+          <img
+            src="/navbar logo.png"
+            alt="AnideDevan"
+            className="h-[34px] w-auto"
+            style={{
+              filter: "brightness(0) saturate(100%) invert(22%) sepia(95%) saturate(5000%) hue-rotate(346deg) brightness(95%) contrast(105%)",
+            }}
+          />
         </a>
         <MenuToggle open={menuOpen} onClick={() => setMenuOpen((v) => !v)} color={[r, g, b]} />
       </motion.div>
@@ -319,10 +325,16 @@ export default function Nav() {
         <div className="flex items-center justify-center px-8 py-4 w-full relative">
           <a
             href="/"
-            className="hidden md:block absolute left-8 font-pulchella font-medium text-2xl md:text-3xl leading-[0.8] select-none"
-            style={{ color: `rgb(${r}, ${g}, ${b})` }}
+            className="hidden md:block absolute left-[26px] -translate-y-1 select-none"
           >
-            AnideDevan
+            <img
+              src="/navbar logo.png"
+              alt="AnideDevan"
+              className="h-[31px] md:h-[35px] w-auto"
+              style={{
+                filter: "brightness(0) saturate(100%) invert(22%) sepia(95%) saturate(5000%) hue-rotate(346deg) brightness(95%) contrast(105%)",
+              }}
+            />
           </a>
           <div ref={containerRef} className="relative flex items-center gap-4 sm:gap-8">
             {links.map((link, i) => (

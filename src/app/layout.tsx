@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "anide",
   description: "Design portfolio showcasing selected work and creative process.",
   icons: {
-    icon: "/cross.png",
+    icon: "/favicon.png",
   },
 };
 

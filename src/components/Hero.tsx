@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen text-white overflow-hidden flex flex-col bg-[#e7cb73]">
       <div className="flex-1 flex items-center justify-center relative z-30">
-        <div className="px-6 py-6 mx-auto">
+        <div className="px-6 pt-16 pb-6 mx-auto md:translate-y-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,12 +145,14 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="w-full relative z-30"
+        className="w-full relative z-30 flex justify-center"
         style={{ opacity: nameOpacity }}
       >
-        <p className="font-pulchella font-medium text-blue-400 text-[clamp(5rem,22vw,36rem)] max-md:text-[clamp(5rem,22vw,36rem)] leading-[0.8] text-center select-none pointer-events-none scale-y-[1.5] max-md:scale-y-[2] md:translate-y-8">
-          AnideDevan
-        </p>
+        <img
+          src="/name.png"
+          alt="AnideDevan"
+          className="w-[99vw] max-w-[2600px] h-auto select-none pointer-events-none md:translate-y-2 max-md:scale-y-[1.3] max-md:-translate-y-4"
+        />
       </motion.div>
     </section>
   );
