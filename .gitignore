@@ -54,3 +54,6 @@ next-env.d.ts
 
 # query script (temporary)
 query_db.py
+
+# mimocode local data
+.mimocode/

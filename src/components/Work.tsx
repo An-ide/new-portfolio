@@ -99,6 +99,45 @@ export default function Work() {
       };
     });
 
+    mm.add("(max-width: 767px)", () => {
+      const cards = section.querySelectorAll<HTMLElement>(".work-card");
+      cards.forEach((card, i) => {
+        const img = card.querySelector<HTMLElement>(".work-card-img");
+        const isEven = i % 2 === 0;
+
+        gsap.fromTo(card,
+          { opacity: 0, x: isEven ? -60 : 60, y: 40 },
+          {
+            opacity: 1, x: 0, y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              end: "top 50%",
+              toggleActions: "play none none reverse",
+            }
+          }
+        );
+
+        if (img) {
+          gsap.fromTo(img,
+            { scale: 1.1, y: 30 },
+            {
+              scale: 1, y: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              }
+            }
+          );
+        }
+      });
+    });
+
     const children = section.querySelectorAll<HTMLElement>(":scope > :not(.skip-reveal)");
     children.forEach(child => {
       gsap.fromTo(child,
@@ -132,16 +171,16 @@ export default function Work() {
       </div>
 
       {/* Horizontal Track (Desktop) / Vertical Stack (Mobile) */}
-      <div ref={trackRef} className="h-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start px-8 relative z-10 w-full md:w-fit gap-32 md:gap-24 max-md:!pt-24" style={{ paddingTop: "12rem" }}>
+      <div ref={trackRef} className="h-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start px-8 relative z-10 w-full md:w-fit gap-16 md:gap-24 max-md:!pt-24" style={{ paddingTop: "12rem" }}>
         {/* Spacer to guarantee first project starts precisely in the visible middle without overflowing right */}
         <div className="hidden md:block flex-shrink-0" style={{ width: "25vw" }}></div>
         
         {projects.map((p, i) => (
-          <div key={p.title} className="w-full md:w-[65vw] h-auto md:h-[75vh] flex-shrink-0 flex flex-col md:flex-row items-center justify-center gap-12 md:pr-[25vw]">
-             
+          <div key={p.title} className="work-card w-full md:w-[65vw] h-auto md:h-[75vh] flex-shrink-0 flex flex-col md:flex-row items-center justify-center gap-12 md:pr-[25vw]">
+
              {/* Uncropped Whole Screenshot Display */}
              <div className="w-full max-md:w-10/12 md:w-7/12 relative flex items-center justify-center">
-                <div className="relative w-full aspect-video pointer-events-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#ebe9e1]">
+                <div className="work-card-img relative w-full aspect-video pointer-events-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#ebe9e1]">
                    <Image
                      src={p.shot}
                      alt={p.title}
