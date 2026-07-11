@@ -153,7 +153,12 @@ export default function Work() {
     <>
     <section id="work" ref={sectionRef} className="relative bg-[#f2f0eb] text-black md:h-screen overflow-hidden pt-24 pb-32 md:pt-0 md:pb-24">
       {/* Fixed Title inside the pinned section (Desktop) or static (Mobile) */}
-      <div className="md:absolute left-8 md:top-24 md:left-24 z-20 pointer-events-none max-md:!mb-12 md:mt-0 md:mb-0 max-md:!pl-5 max-md:!pr-4 md:px-0">
+      <div className="work-title-wrap md:absolute left-8 md:top-24 md:left-24 z-20 pointer-events-none max-md:!mb-12 md:mt-0 md:mb-0 max-md:!pl-5 max-md:!pr-4 md:px-0">
+        <style>{`
+          @media (max-width: 767px) {
+            .work-title-wrap { padding-top: clamp(60px, 10vw, 120px); }
+          }
+        `}</style>
         <motion.h2
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
