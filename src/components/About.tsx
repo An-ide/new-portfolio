@@ -87,6 +87,7 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
+              style={{ paddingLeft: "clamp(10px, 2vw, 48px)" }}
             >
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-black">
                 <div style={{ width: "fit-content" }} className="bg-white px-1 whitespace-nowrap mb-5">

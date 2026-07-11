@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, FormEvent } from "react"
 import { ArrowRight, X } from 'lucide-react'
 import { GoesOutComesInUnderline } from './UnderlineAnimations'
 import GridDistortion from './GridDistortion'
@@ -9,6 +9,13 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgvzgwaz"
 
 export default function ContactFooter() {
   const [formOpen, setFormOpen] = useState(false)
+  const [showError, setShowError] = useState(false)
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    setShowError(true)
+    setTimeout(() => setShowError(false), 4000)
+  }
 
   return (
     <footer id="contact" style={{ width: '100%', background: '#0a0a0a' }}>
@@ -131,9 +138,9 @@ export default function ContactFooter() {
       )}
 
       {/* Main two-column section */}
-      <div className="footer-main" style={{ display: 'flex', flexDirection: 'row', minHeight: '100vh' }}>
+      <div className="footer-main" style={{ display: 'flex', flexDirection: 'row' }}>
         {/* Left Column */}
-        <div className="footer-left" style={{ flex: 1, padding: '64px 48px 64px 96px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#0a0a0a' }}>
+        <div className="footer-left" style={{ flex: 1, padding: '64px 48px 64px 96px', display: 'flex', flexDirection: 'column', background: '#0a0a0a' }}>
           <div>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-black" style={{ margin: '0 0 16px' }}>
               <div style={{ width: "fit-content" }} className="bg-white px-1 whitespace-nowrap mb-5 shadow-sm">
@@ -143,25 +150,28 @@ export default function ContactFooter() {
                 in touch
               </div>
             </h2>
-            <p style={{ fontSize: 18, color: '#888', margin: '0 0 64px', fontWeight: 500 }}>
+            <p style={{ fontSize: 22, color: '#888', margin: '0 0 64px', fontWeight: 500 }}>
               Don&apos;t be afraid to say hello to me!
             </p>
 
-            <div className="footer-social" style={{ display: 'flex', flexDirection: 'column', gap: 20, marginLeft: 80, marginTop: 180 }}>
-              <a href="https://www.linkedin.com/in/anidecc/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 22, fontWeight: 400, letterSpacing: '0.1em' }}>
+            <div className="footer-social" style={{ display: 'flex', flexDirection: 'column', gap: 20, marginLeft: 80, marginTop: 240 }}>
+              <a href="https://www.linkedin.com/in/anidecc/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 28, fontWeight: 400, letterSpacing: '0.1em', display: 'inline-block', width: 'fit-content' }}>
                 <GoesOutComesInUnderline label="LINKEDIN" direction="right" />
               </a>
-              <a href="https://www.instagram.com/aniderw" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 22, fontWeight: 400, letterSpacing: '0.1em' }}>
+              <a href="https://www.instagram.com/aniderw" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 28, fontWeight: 400, letterSpacing: '0.1em', display: 'inline-block', width: 'fit-content' }}>
                 <GoesOutComesInUnderline label="INSTAGRAM" direction="left" />
               </a>
-              <a href="https://github.com/An-ide" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 22, fontWeight: 400, letterSpacing: '0.1em' }}>
+              <a href="https://github.com/An-ide" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', fontSize: 28, fontWeight: 400, letterSpacing: '0.1em', display: 'inline-block', width: 'fit-content' }}>
                 <GoesOutComesInUnderline label="GITHUB" direction="right" />
               </a>
               <div style={{ marginTop: 8 }}>
-                <a href="mailto:anidecc@aol.com" style={{ textDecoration: 'none', color: '#fff', fontSize: 22, fontWeight: 400 }}>
+                <a href="mailto:anidecc@aol.com" style={{ textDecoration: 'none', color: '#fff', fontSize: 28, fontWeight: 400, display: 'inline-block', width: 'fit-content' }}>
                   <GoesOutComesInUnderline label="ANIDECC@AOL.COM" direction="left" />
                 </a>
               </div>
+            </div>
+            <div className="flex justify-center md:hidden" style={{ marginTop: 80, padding: '0 24px' }}>
+              <img src="/soundgarden.jpg" alt="Soundgarden" style={{ width: '100%', maxWidth: 360, borderRadius: 8, objectFit: 'cover' }} />
             </div>
           </div>
         </div>
@@ -169,49 +179,29 @@ export default function ContactFooter() {
         {/* Right Column */}
         <div className="footer-right" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           {/* Top half — dark */}
-          <div className="footer-right-top" style={{ flex: 1, padding: '32px 48px', background: '#0a0a0a', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ marginTop: 'auto', marginBottom: 48 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                <ArrowRight size={32} color="#FFC100" strokeWidth={2.5} />
-                <span style={{ fontSize: 16, color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Inquiry</span>
-              </div>
-              <p style={{ fontSize: 22, color: '#999', lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
-                Great! I&apos;m excited to hear from you and let&apos;s start something special together. call me for any inquiry.
+          <div className="footer-right-top hidden md:flex" style={{ flex: 0.6, padding: '32px 48px', background: '#0a0a0a', flexDirection: 'column' }}>
+            <div style={{ marginTop: 320, marginBottom: 48, display: 'flex', alignItems: 'center', gap: 32 }}>
+              <svg width="200" height="16" viewBox="0 0 200 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                <line x1="0" y1="8" x2="184" y2="8" stroke="#333" strokeWidth="3"/>
+                <polygon points="184,2 198,8 184,14" fill="#333"/>
+              </svg>
+              <p style={{ fontSize: 22, color: '#888', lineHeight: 1.7, margin: 0 }}>
+                Great! We&apos;re excited to hear from you and<br/>
+                let&apos;s start something special together.<br/>
+                call us for any inquiry.
               </p>
-              <button
-                className="md:hidden flex"
-                onClick={() => setFormOpen(true)}
-                style={{
-                  marginTop: 20,
-                  background: '#FFC100',
-                  color: '#000',
-                  border: 'none',
-                  padding: '12px 28px',
-                  borderRadius: 8,
-                  fontWeight: 700,
-                  fontSize: 14,
-                  cursor: 'pointer',
-                  alignItems: 'center',
-                  gap: 8,
-                  letterSpacing: '0.05em',
-                }}
-              >
-                <ArrowRight size={16} />
-                Let&apos;s build
-              </button>
             </div>
           </div>
 
           {/* Bottom half — form (desktop only) */}
-          <div className="hidden md:block footer-form-area" style={{ flex: 1.4, background: '#2a2a2a', padding: '48px 48px 0' }}>
-            <form action={FORMSPREE_ENDPOINT} method="POST">
+          <div className="hidden md:block footer-form-area" style={{ background: '#1a1a1a', padding: '48px 48px 48px 48px', marginRight: '15%' }}>
+            <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
               <div className="footer-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px 32px', marginBottom: 24 }}>
                 {['Name', 'Email', 'Phone', 'Subject'].map(label => (
                   <input
                     key={label}
                     name={label.toLowerCase()}
                     placeholder={label}
-                    required={label === 'Email'}
                     style={{
                       background: 'transparent',
                       border: 'none',
@@ -228,7 +218,6 @@ export default function ContactFooter() {
                 name="message"
                 placeholder="Tell me about what you're interested in"
                 rows={4}
-                required
                 style={{
                   width: '100%',
                   background: 'transparent',
@@ -243,14 +232,29 @@ export default function ContactFooter() {
                   fontFamily: 'inherit',
                 }}
               />
-              <button type="submit" style={{ width: '100%', background: '#FFC100', color: '#000', border: 'none', padding: '16px', borderRadius: 8, fontWeight: 700, fontSize: 16, cursor: 'pointer' }}>
-                Send
-              </button>
+              <div style={{ position: 'relative' }}>
+                <button type="submit" style={{ width: '100%', background: '#FFC100', color: '#000', border: 'none', padding: '16px', borderRadius: 8, fontWeight: 700, fontSize: 16, cursor: 'pointer' }}>
+                  Send
+                </button>
+                {showError && (
+                  <div style={{ position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: 12, padding: '14px 18px', background: '#2a2a2a', borderRadius: 8, border: '1px solid #FFC100', whiteSpace: 'nowrap', zIndex: 10 }}>
+                    <p style={{ fontSize: 14, color: '#FFC100', fontWeight: 700, margin: 0 }}>
+                      My little jar of ashes, just use the socials on the left.
+                    </p>
+                    <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', width: 0, height: 0, borderLeft: '8px solid transparent', borderRight: '8px solid transparent', borderTop: '8px solid #FFC100' }} />
+                  </div>
+                )}
+              </div>
             </form>
           </div>
         </div>
       </div>
 
+      <style>{`
+        @media (max-width: 767px) {
+          .footer-distortion { margin-top: 40px !important; }
+        }
+      `}</style>
       {/* Grid Distortion footer background */}
       <div className="footer-distortion" style={{ width: '100%', height: 280, background: '#111', position: 'relative', overflow: 'hidden' }}>
         <GridDistortion 

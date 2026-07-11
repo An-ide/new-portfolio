@@ -18,7 +18,7 @@ export function MuteButton({ color: _color }: MuteButtonProps) {
       aria-label={muted ? "Unmute music" : "Mute music"}
       aria-pressed={muted}
       title={muted ? "Unmute" : "Mute"}
-      className="hidden md:flex absolute right-8 items-center justify-center w-9 h-9 rounded-md bg-neutral-900/90 hover:bg-neutral-800 active:scale-95 transition-all duration-150"
+      className="hidden md:flex absolute right-8 items-center justify-center w-9 h-9 rounded-md bg-neutral-900/90 hover:bg-neutral-800 active:scale-95 transition-all duration-150 cursor-grab"
     >
       <SpeakerIcon muted={muted} />
     </button>

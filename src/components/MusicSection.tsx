@@ -40,8 +40,13 @@ function VinylDisc({ src, alt }: { src: string; alt: string }) {
 
 function NowPlaying({ now }: { now: any }) {
   return (
-    <div className="p-1.5 rounded-[2.25rem] bg-white/25 ring-1 ring-white/30 shadow-lg overflow-hidden max-md:!mx-0" style={{ marginLeft: "96px", marginRight: "96px" }}>
-      <div className="rounded-[calc(2.25rem-0.375rem)] bg-white overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
+    <div className="p-1.5 rounded-[2.25rem] ring-1 ring-white/30 shadow-lg overflow-hidden max-md:!mx-0" style={{ marginLeft: "240px", marginRight: "240px", backgroundColor: "#ffebcd" }}>
+      <style>{`
+        @media (min-width: 768px) {
+          .now-playing-divider { margin-bottom: 12px !important; }
+        }
+      `}</style>
+      <div className="rounded-[calc(2.25rem-0.375rem)] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
         <div className="flex flex-row items-center p-7 md:p-12 min-h-[130px] md:min-h-[240px] gap-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -78,7 +83,13 @@ function NowPlaying({ now }: { now: any }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
           >
-            <div className="flex items-center justify-center sm:justify-start gap-3 mb-4 md:mb-5">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 16 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+              className="flex items-center justify-center sm:justify-start gap-3 mb-2 md:mb-3"
+            >
               {now.isNow ? (
                 <>
                   <span className="relative flex w-2.5 h-2.5">
@@ -94,12 +105,12 @@ function NowPlaying({ now }: { now: any }) {
                   Last played
                 </span>
               )}
-            </div>
+            </motion.div>
 
-            <h3 className="font-harmond text-lg sm:text-3xl lg:text-4xl italic leading-[0.9] tracking-tight text-black mb-3 max-md:!text-lg">
+            <h3 className="text-lg sm:text-3xl lg:text-4xl italic leading-[0.9] tracking-tight text-black mb-3 max-md:!text-lg" style={{ fontFamily: "'Libre Baskerville', serif", marginTop: 24 }}>
               {now.name}
             </h3>
-            <div className="w-10 h-0.5 bg-black/10 mb-4 hidden sm:block" />
+            <div className="now-playing-divider w-10 h-0.5 bg-black/10 mb-4 hidden sm:block" />
             <p className="text-lg md:text-2xl font-medium text-black/55 mb-1 font-polite">
               {now.artist}
             </p>
@@ -169,7 +180,7 @@ function AlbumCard({ album, index, large }: { album: any; index: number; large?:
               position: "absolute", inset: 0, width: "100%", height: "100%",
               objectFit: "cover", pointerEvents: "none", zIndex: 2
             }} />
-            <div className="absolute top-3.5 left-3.5 bg-white/90 backdrop-blur-md text-black font-mono text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm ring-1 ring-black/5">
+            <div className="absolute top-3.5 left-3.5 backdrop-blur-md text-black font-mono text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm ring-1 ring-black/5" style={{ backgroundColor: "#ffebcd" }}>
               #{String(index).padStart(2, "0")}
             </div>
           </div>
@@ -210,11 +221,11 @@ function ArtistCard({ artist, rank }: { artist: any; rank: number }) {
             <span className="text-2xl font-bold text-black/30">{artist.name[0]}</span>
           </div>
         )}
-        <div className="absolute top-2 left-2 bg-white/90 text-black font-mono text-[8px] font-bold px-2 py-0.5 rounded-full">
+        <div className="absolute top-2 left-2 text-black font-mono text-[8px] font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: "#ffebcd" }}>
           #{String(rank).padStart(2, "0")}
         </div>
         <div className="absolute bottom-1.5 left-1.5 right-1.5">
-          <span className="inline bg-white/90 px-1 shadow-sm text-[9px] font-bold text-black/90 whitespace-nowrap">
+          <span className="inline px-1 shadow-sm text-[9px] font-bold text-black/90 whitespace-nowrap" style={{ backgroundColor: "#ffebcd" }}>
             {artist.name}
           </span>
         </div>
@@ -237,11 +248,11 @@ function ArtistCard({ artist, rank }: { artist: any; rank: number }) {
             displayOverlayContent={true}
             overlayContent={
               <>
-                <div className="absolute top-3.5 left-3.5 bg-white/90 backdrop-blur-md text-black font-mono text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm ring-1 ring-black/5">
+                <div className="absolute top-3.5 left-3.5 backdrop-blur-md text-black font-mono text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm ring-1 ring-black/5" style={{ backgroundColor: "#ffebcd" }}>
                   #{String(rank).padStart(2, "0")}
                 </div>
                 <div className="absolute bottom-2.5 left-2.5 right-2.5">
-                  <span className="inline bg-white/90 px-1.5 shadow-sm text-base font-bold text-black/90 whitespace-nowrap">
+                  <span className="inline px-1.5 shadow-sm text-base font-bold text-black/90 whitespace-nowrap" style={{ backgroundColor: "#ffebcd" }}>
                     {artist.name}
                   </span>
                 </div>
@@ -321,8 +332,17 @@ export default function MusicSection() {
     return () => clearInterval(i);
   }, []);
 
+
+
   return (
     <section id="music" ref={sectionRef} className="relative bg-[#93c5fd] text-black overflow-x-hidden mt-16 md:mt-24">
+      <motion.div
+        className="absolute inset-0 z-10 bg-[#f2f0eb]"
+        initial={{ clipPath: "inset(0 0 0% 0)" }}
+        whileInView={{ clipPath: "inset(0 0 100% 0)" }}
+        viewport={{ once: true, margin: "0px" }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+      />
       <div className="music-reveal">
           <div className="max-md:px-4 max-md:pt-14 max-md:pb-10" style={{ padding: "80px 16px" }}>
             <motion.div
@@ -331,13 +351,13 @@ export default function MusicSection() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: EASE }}
               className="mb-8 md:mb-12"
-              style={{ paddingLeft: "clamp(4px, 2vw, 72px)" }}
+              style={{ paddingLeft: "clamp(20px, 4vw, 96px)" }}
             >
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-black">
-                <div style={{ width: "fit-content" }} className="bg-white px-1 whitespace-nowrap mb-5 shadow-sm">
+                <div style={{ width: "fit-content", backgroundColor: "#ffebcd" }} className="px-1 whitespace-nowrap mb-5 shadow-sm">
                   Heavy
                 </div>
-                <div style={{ width: "fit-content" }} className="bg-white px-1 whitespace-nowrap shadow-sm">
+                <div style={{ width: "fit-content", backgroundColor: "#ffebcd" }} className="px-1 whitespace-nowrap shadow-sm">
                   rotation
                 </div>
               </h2>
@@ -357,7 +377,7 @@ export default function MusicSection() {
                         margin: 0,
                         marginLeft: "160px"
                       }}>
-                        <span className="inline bg-white px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)" }}>
+                        <span className="inline px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)", backgroundColor: "#ffebcd" }}>
                           Top artists of all time
                         </span>
                       </h3>
@@ -379,7 +399,7 @@ export default function MusicSection() {
                   <div className="md:hidden" style={{ marginTop: "clamp(40px, 8vw, 80px)", marginLeft: "16px", marginRight: "16px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
                       <h3 style={{ fontSize: "clamp(18px, 4vw, 28px)", fontWeight: 900, lineHeight: 1.2, margin: 0 }}>
-                        <span className="inline bg-white px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)" }}>
+                        <span className="inline px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)", backgroundColor: "#ffebcd" }}>
                           Top albums
                         </span>
                       </h3>
@@ -398,7 +418,7 @@ export default function MusicSection() {
                   <div className="hidden md:block" style={{ marginTop: "clamp(40px, 8vw, 80px)", marginLeft: "120px", marginRight: "clamp(16px, 5vw, 48px)" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
                       <h3 style={{ fontSize: "clamp(18px, 4vw, 28px)", fontWeight: 900, lineHeight: 1.2, margin: 0 }}>
-                        <span className="inline bg-white px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)" }}>
+                        <span className="inline px-1.5 whitespace-nowrap shadow-sm" style={{ color: "rgba(0,0,0,0.9)", backgroundColor: "#ffebcd" }}>
                           Top albums
                         </span>
                       </h3>

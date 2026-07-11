@@ -151,10 +151,10 @@ export default function Work() {
 
   return (
     <>
-    <section id="work" ref={sectionRef} className="relative bg-[#f2f0eb] text-black md:h-screen overflow-hidden overflow-x-hidden py-24 md:pt-0 md:pb-24">
+    <section id="work" ref={sectionRef} className="relative bg-[#f2f0eb] text-black md:h-screen overflow-hidden pt-24 pb-32 md:pt-0 md:pb-24">
       {/* Fixed Title inside the pinned section (Desktop) or static (Mobile) */}
-      <div className="md:absolute top-12 left-8 md:top-24 md:left-24 z-20 pointer-events-none max-md:!mt-16 max-md:!mb-12 md:mt-0 md:mb-0 max-md:!pl-5 max-md:!pr-4 md:px-0">
-        <motion.h2 
+      <div className="md:absolute left-8 md:top-24 md:left-24 z-20 pointer-events-none max-md:!mb-12 md:mt-0 md:mb-0 max-md:!pl-5 max-md:!pr-4 md:px-0">
+        <motion.h2
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -171,7 +171,7 @@ export default function Work() {
       </div>
 
       {/* Horizontal Track (Desktop) / Vertical Stack (Mobile) */}
-      <div ref={trackRef} className="h-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start px-8 relative z-10 w-full md:w-fit gap-16 md:gap-24 max-md:!pt-24" style={{ paddingTop: "12rem" }}>
+      <div ref={trackRef} className="h-auto md:h-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start px-8 relative z-10 w-full md:w-fit gap-16 md:gap-24 max-md:!pt-24" style={{ paddingTop: "12rem" }}>
         {/* Spacer to guarantee first project starts precisely in the visible middle without overflowing right */}
         <div className="hidden md:block flex-shrink-0" style={{ width: "25vw" }}></div>
         

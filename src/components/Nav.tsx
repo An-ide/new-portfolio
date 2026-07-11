@@ -296,7 +296,7 @@ export default function Nav() {
         <MobileMuteButton color={[r, g, b]} />
         <a
           href="/"
-          className="absolute left-[calc(50%-1px)] -translate-x-1/2 top-2 select-none"
+          className="absolute left-1/2 -translate-x-1/2 top-2 select-none"
         >
           <img
             src="/navbar logo.png"
