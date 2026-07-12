@@ -28,13 +28,13 @@ const projects = [
     stack: ["Vite", "Vanilla JS"],
   },
   {
-    title: "Ephemeral Pastebin",
+    title: "Cycle Tracker",
     year: "2024",
-    typ: "Utility",
-    url: "https://epastebin.netlify.app",
-    shot: "/screenshots/ephemeral-pastebin.jpg",
-    note: "Privacy-first pastebin where shared text automatically expires. No accounts, no tracking — just temporary sharing that cleans up after itself.",
-    stack: ["Netlify", "Express"],
+    typ: "Health",
+    url: "https://github.com/An-ide/cycle-tracker",
+    shot: "/screenshots/cycle-tracker.png",
+    note: "A menstrual cycle prediction app with calendar visualization. Tracks period, fertile window, and ovulation dates with an intuitive UI and customizable cycle settings.",
+    stack: ["React", "Calendar"],
   },
   {
     title: "Heritage India",
@@ -181,7 +181,7 @@ export default function Work() {
         <div className="hidden md:block flex-shrink-0" style={{ width: "25vw" }}></div>
         
         {projects.map((p, i) => (
-          <div key={p.title} className="work-card w-full md:w-[65vw] h-auto md:h-[75vh] flex-shrink-0 flex flex-col md:flex-row items-center justify-center gap-12 md:pr-[25vw]">
+          <div key={p.title} className={`work-card w-full md:w-[65vw] h-auto md:h-[75vh] flex-shrink-0 flex flex-col md:flex-row items-center justify-center gap-12 md:pr-[25vw]`}>
 
              {/* Uncropped Whole Screenshot Display */}
              <div className="w-full max-md:w-10/12 md:w-7/12 relative flex items-center justify-center">
@@ -228,6 +228,7 @@ export default function Work() {
              
           </div>
         ))}
+        <div className="hidden md:block flex-shrink-0" style={{ width: "19vw" }}></div>
       </div>
     </section>
     <div className="bg-[#f2f0eb] h-32 md:h-48" />
