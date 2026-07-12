@@ -31,7 +31,7 @@ const projects = [
     title: "Cycle Tracker",
     year: "2024",
     typ: "Health",
-    url: "https://github.com/An-ide/cycle-tracker",
+    url: "https://periodcycletracker.netlify.app/",
     shot: "/screenshots/cycle-tracker.png",
     note: "A menstrual cycle prediction app with calendar visualization. Tracks period, fertile window, and ovulation dates with an intuitive UI and customizable cycle settings.",
     stack: ["React", "Calendar"],
